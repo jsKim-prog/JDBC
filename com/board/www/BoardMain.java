@@ -21,7 +21,7 @@ public class BoardMain {
 	public BoardMain() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");// 1단계(드라이버명)
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.111.103:1521:orcl", "board", "1234"); // 2단계(url,
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "id", "pw"); // 2단계(url,
 																														// id,
 																														// pw)
 		} catch (ClassNotFoundException e) {
