@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.board.www.dto.Author;
 //import com.board.www.dao.BoardDAO;
 import com.board.www.dto.MemberDTO;
 import com.board.www.service.BoardService;
@@ -21,7 +22,7 @@ public class BoardMain {
 	public BoardMain() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");// 1단계(드라이버명)
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.111.103:1521:orcl", "board", "1234"); // 2단계(url,
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.111.103:1521:orcl", "boardtest", "boardtest"); // 2단계(url,
 																														// id,
 																														// pw)
 		} catch (ClassNotFoundException e) {
@@ -40,6 +41,8 @@ public class BoardMain {
 		// 기본적인 설정 : 스캐너, jdbc연동, 주메뉴
 
 		BoardMain boardMain = new BoardMain(); // 생성자 호출 -> 1단계, 2단계 실행
+		MemberDTO guestMem = new MemberDTO(Author.GUEST);//처음 접속한 guest 멤버 객체 생성
+		loginMember=guestMem; //로그인세션에 게스트 객체 연결
 
 		System.out.println("MBC 아카데미 대나무숲 오신 것을 환영합니다.");
 		boolean run = true;
@@ -53,7 +56,6 @@ public class BoardMain {
 				System.out.println("회원용 서비스로 진입합니다.");
 				MemberService memberService = new MemberService();
 				loginMember = memberService.memberMenu(scanner, loginMember, connection);
-				System.out.println(loginMember.getMid() + "님 환영합니다.");
 				// 회원서비스에서 로그인 정보가 유지되어야 함
 				break;
 			case 2:
