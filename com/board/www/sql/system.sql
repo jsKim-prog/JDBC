@@ -19,4 +19,6 @@ CREATE USER boardtest IDENTIFIED BY boardtest;
 GRANT connect, Resource to boardtest;
 ALTER USER boardtest default tablespace board;
 --boardtest계정 새로 생성 및 권한부여(일반조원)
+Grant DBA to boardtest ;
+-- boardtest계정 dba권한 부여(resource 권한은 table drop 안됨)
 -->boardtest 계정으로 접속

@@ -28,6 +28,11 @@ insert into board (bno, btitle, bcontent, bwriter, bdate)
 values (board_seq.nextval, '방갑습니다.~', '비오는데 등교하시는냐고 고생 하셨습니다.', 'eee', sysdate);
 
 select * from board ;	
+select * from board where bwriter = 'aaa';
+select * from board where bno = 5;
+delete from board where bno = 7;
+
+insert into board (bno, btitle, bcontent, bwriter, bdate) values (board_seq.nextval, '새글', '새글테스트','aaa',sysdate);
 
 -----member 테이블용
 CREATE TABLE member(

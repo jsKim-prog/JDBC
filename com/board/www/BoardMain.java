@@ -14,6 +14,7 @@ import com.board.www.service.MemberService;
 public class BoardMain {
 	// 필드
 	public static Scanner scanner = new Scanner(System.in);
+	public static Scanner sclong = new Scanner(System.in);
 	// public static BoardDAO boardDAO = new BoardDAO(); //jdbc 담당
 	public static Connection connection = null;
 	public static MemberDTO loginMember = null; // 로그인 후의 객체
@@ -61,7 +62,7 @@ public class BoardMain {
 			case 2:
 				System.out.println("게시판 서비스로 진입입합니다.");
 				BoardService boardService = new BoardService();
-				boardService.list(connection);
+				boardService.menu(scanner, connection, guestMem, sclong);
 				break;
 			case 3:
 				System.out.println("대나무숲을 종료합니다.");
